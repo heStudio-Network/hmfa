@@ -22,6 +22,9 @@ python hmfa.py
 ### 备份
 直接复制目录下的`.hmfa_token.json`到其他位置即可。
 
+### Secure获取
+部分账户不提供Secure，而是一个二维码。可以使用一些解码工具提取Secure
+
 ### 使用的第三方模块
 - pyotp：
    - 用途：获取令牌
@@ -33,5 +36,5 @@ python hmfa.py
    - 用途：主要显示模块
    - 主页：https://gitee.com/hestudio-framework/main-windows/
    - 作者：heStudio
-   - 最低支持版本号：0.5.0
+   - 最低支持版本号：0.5.1
    - License：MIT License

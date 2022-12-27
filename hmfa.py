@@ -26,14 +26,17 @@ def get():
             storage = pyotp.TOTP(str(secure))
             win = heframework.refresh_show(title="令牌", geometry="200x100")
             while True:
-                code = win.refresh(str(storage.now()))
-                time.sleep(1)
-                if code == 21099:
-                    break
-                elif code == 20000:
-                    pass
-                else:
-                    sys.exit()
+                t = 30
+                for i in range(30):
+                    code = win.refresh(str(storage.now()+"\n剩余时间"+t+"秒"))
+                    t -= 1
+                    time.sleep(1)
+                    if code == 21099:
+                        break
+                    elif code == 20000:
+                        pass
+                    else:
+                        sys.exit()
 
 
 # 控制台模块
@@ -143,7 +146,7 @@ heStudio 博客：https://www.hestudio.org
         用途：主要显示模块
         主页：https://gitee.com/hestudio-framework/main-windows/
         作者：heStudio
-        最低支持版本号：0.5.0
+        最低支持版本号：0.5.1
         License：MIT License
     """)
 
