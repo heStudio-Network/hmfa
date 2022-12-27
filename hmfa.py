@@ -77,33 +77,37 @@ def add():
 
 
 def delete():
-    read_only_file = open(".hmfa_token.json")
-    dicts = json.load(read_only_file)
-    read_only_file.close()
-    if not dicts["name"]:
-        heframework.show(title="heStudio MFA Tool for Desktop",
-                         message="没有可以删除的令牌了！")
+    if not os.path.exists(".hmfa_token.json"):
+        heframework.show(
+                    title="heStudio MFA Tool for Desktop", message="没有令牌文件")
     else:
-        num = 0
-        for i in dicts["name"]:
-            num += 1
-            print(num, ": ", i)
-        choose = int(input("请输入你要删除的项目："))
-        if choose >= 1 and choose <= num:
-            names = dicts["name"]
-            secures = dicts["return_text"]
-            del names[int(choose-1)]
-            del secures[int(choose-1)]
-            heframework.show(
-                title="heStudio MFA Tool for Desktop", message="删除成功！")
-            file_after = open(".hmfa_token.json", "w")
-            dict_after = {"name": names, "return_text": secures}
-            file_after.write(json.dumps(dict_after))
-            time.sleep(1)
-            file_after.close()
-        else:
+        read_only_file = open(".hmfa_token.json")
+        dicts = json.load(read_only_file)
+        read_only_file.close()
+        if not dicts["name"]:
             heframework.show(title="heStudio MFA Tool for Desktop",
-                             message="输入的数字错误！")
+                            message="没有可以删除的令牌了！")
+        else:
+            num = 0
+            for i in dicts["name"]:
+                num += 1
+                print(num, ": ", i)
+            choose = int(input("请输入你要删除的项目："))
+            if choose >= 1 and choose <= num:
+                names = dicts["name"]
+                secures = dicts["return_text"]
+                del names[int(choose-1)]
+                del secures[int(choose-1)]
+                heframework.show(
+                    title="heStudio MFA Tool for Desktop", message="删除成功！")
+                file_after = open(".hmfa_token.json", "w")
+                dict_after = {"name": names, "return_text": secures}
+                file_after.write(json.dumps(dict_after))
+                time.sleep(1)
+                file_after.close()
+            else:
+                heframework.show(title="heStudio MFA Tool for Desktop",
+                                message="输入的数字错误！")
 
 
 def console():
