@@ -27,12 +27,13 @@ def get():
             win = heframework.refresh_show(title="令牌", geometry="200x100")
             while True:
                 t = 30
+                token_now = storage.now()
                 for i in range(30):
-                    code = win.refresh(str(storage.now()+"\n剩余时间"+t+"秒"))
+                    code = win.refresh(str(token_now+"\n剩余时间"+str(t)+"秒"))
                     t -= 1
                     time.sleep(1)
                     if code == 21099:
-                        break
+                        sys.exit()
                     elif code == 20000:
                         pass
                     else:
