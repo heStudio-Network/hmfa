@@ -26,6 +26,13 @@ python hmfa.py
 部分账户不提供Secure，而是一个二维码。可以使用一些解码工具提取Secure
 
 ### 使用的第三方模块
+
+#### 快速安装
+```bash
+pip install pyotp heframework
+```
+
+#### 详细信息
 - pyotp：
    - 用途：获取令牌
    - 主页：https://github.com/pyotp/pyotp
