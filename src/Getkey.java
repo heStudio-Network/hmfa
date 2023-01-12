@@ -7,7 +7,7 @@ import java.security.InvalidKeyException;
 
 public class Getkey {
     public static void main(String[] args) throws IOException, InvalidKeyException {
-        File heStudioDir = new File("\\", "heStudio");
+        File heStudioDir = new File("/", "heStudio");
         boolean RootDirExists = heStudioDir.exists();
         if (RootDirExists) {
             boolean DirExistsIsDir = heStudioDir.isDirectory();
@@ -18,7 +18,7 @@ public class Getkey {
         } else {
             System.out.println("什么都没有！");
         }
-        File TokenDir = new File("\\heStudio", ".hmfa_token");
+        File TokenDir = new File("/heStudio", ".hmfa_token");
         boolean DirExists = TokenDir.exists();
         if (DirExists) {
             boolean DirExistsIsDir = TokenDir.isDirectory();
@@ -40,7 +40,7 @@ public class Getkey {
         if (choose_return >= 0) {
             if (choose_return < NamesList.length) {
                 String NameReady = NamesList[choose_return];
-                File ReadyFile = new File("\\heStudio\\.hmfa_token", NameReady);
+                File ReadyFile = new File("/heStudio/.hmfa_token", NameReady);
                 FileInputStream TokenRead = new FileInputStream(ReadyFile);
                 InputStreamReader inputStreamReader = new InputStreamReader(TokenRead);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);

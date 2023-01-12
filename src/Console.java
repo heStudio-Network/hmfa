@@ -7,7 +7,7 @@ import java.security.InvalidKeyException;
 
 public class Console {
     static void Add() throws IOException, InvalidKeyException {
-        File heStudioDir = new File("\\", "heStudio");
+        File heStudioDir = new File("/", "heStudio");
         boolean RootDirExists = heStudioDir.exists();
         if (RootDirExists) {
             boolean DirExistsIsDir = heStudioDir.isDirectory();
@@ -18,7 +18,7 @@ public class Console {
         } else {
             heStudioDir.mkdir();
         }
-        File TokenDir = new File("\\heStudio", ".hmfa_token");
+        File TokenDir = new File("/heStudio", ".hmfa_token");
         boolean DirExists = TokenDir.exists();
         if (DirExists) {
             boolean DirExistsIsDir = TokenDir.isDirectory();
@@ -35,7 +35,7 @@ public class Console {
         System.out.print("请输入令牌Secure: ");
         Scanner secure = new Scanner(System.in);
         String TokenSecure = secure.nextLine();
-        File NameFile = new File("\\heStudio\\.hmfa_token", TokenName);
+        File NameFile = new File("/heStudio/.hmfa_token", TokenName);
         if (NameFile.exists()) {
             System.err.println("该名称已经存在！");
             Console.main(null);
@@ -52,7 +52,7 @@ public class Console {
     }
 
     static void Delete() throws IOException, InvalidKeyException {
-        File heStudioDir = new File("\\", "heStudio");
+        File heStudioDir = new File("/", "heStudio");
         boolean RootDirExists = heStudioDir.exists();
         if (RootDirExists) {
             boolean DirExistsIsDir = heStudioDir.isDirectory();
@@ -63,7 +63,7 @@ public class Console {
         } else {
             System.out.println("什么都没有！");
         }
-        File TokenDir = new File("\\heStudio", ".hmfa_token");
+        File TokenDir = new File("/heStudio", ".hmfa_token");
         boolean DirExists = TokenDir.exists();
         if (DirExists) {
             boolean DirExistsIsDir = TokenDir.isDirectory();
@@ -85,7 +85,7 @@ public class Console {
         if (choose_return >= 0) {
             if (choose_return < NamesList.length) {
                 String NameDelete = NamesList[choose_return];
-                File DeleteFile = new File("\\heStudio\\.hmfa_token", NameDelete);
+                File DeleteFile = new File("/heStudio/.hmfa_token", NameDelete);
                 DeleteFile.delete();
                 System.out.println("令牌 " + NameDelete + " 已删除");
                 Console.main(null);
